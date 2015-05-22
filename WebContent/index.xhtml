@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Gerenciador de Projetos Scrum</title>
+<!-- 	<h:outputStylesheet library="css" name="main.css"  /> -->
+</h:head>
+<body>
+	<p:outputPanel>
+		<div class="ui-grid ui-grid-responsive">
+
+			<div class="ui-grid-row">
+				<div class="ui-grid-col-4">Gerenciador de Projetos Scrum</div>
+				<div class="ui-grid-col-4">&nbsp;</div>
+				<div class="ui-grid-col-4">&nbsp;</div>
+			</div>
+			<p:separator />
+			<div class="ui-grid-row">
+				<div class="ui-grid-col-12">&nbsp;</div>
+			</div>
+			<p:separator />
+			<div class="ui-grid-row">
+				<div class="ui-grid-col-3">&nbsp;</div>
+				<div class="ui-grid-col-3">
+				<p:button outcome="selecionar" value="Selecionar Projeto" icon="ui-icon-pencil"></p:button>
+				</div>
+				<div class="ui-grid-col-3">
+				<p:button outcome="novo" value="Novo Projeto" icon="ui-icon-circle-plus"></p:button>
+				</div>
+				<div class="ui-grid-col-3">&nbsp;</div>
+			</div>
+
+			<div class="ui-grid-row">
+				<div class="ui-grid-col-4">&nbsp;</div>
+				<div class="ui-grid-col-4">&nbsp;</div>
+				<div class="ui-grid-col-4">&nbsp;</div>
+			</div>
+
+		</div>
+	</p:outputPanel>
+</body>
+</html>

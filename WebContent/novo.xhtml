@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</h:head>
+<body>
+
+	<p:outputPanel>
+		<div class="ui-grid ui-grid-responsive">
+			<div class="ui-grid-row">
+				<div class="ui-grid-col-4">Gerenciador de Projetos Scrum</div>
+				<div class="ui-grid-col-4"></div>
+				<div class="ui-grid-col-4">&nbsp;</div>
+			</div>
+			<p:separator />
+			<div class="ui-grid-row">
+				<div class="ui-grid-col-6">
+					<p:link outcome="index" value="Home"></p:link>
+				</div>
+				<div class="ui-grid-col-6">&nbsp;</div>
+			</div>
+			<p:separator />
+		</div>
+	</p:outputPanel>
+	<h:form acceptcharset="utf-8">
+		<h:panelGrid id="panel" columns="3">
+		Nome do Projeto:<p:inputText id="nomeDoProjeto"
+				value="#{projetoBean.projeto.nome}" required="true" />
+			<h:message for="nomeDoProjeto" />
+		</h:panelGrid>
+		<br />
+		Requisitos (separados por ";"):<br />
+		<p:inputTextarea class="iarea" value="#{projetoBean.requisitoString}"
+			cols="50" rows="10" />
+		<br />
+		<p:separator style="visibility: hidden;" />
+		<h:commandButton action="#{projetoBean.salvarNovo}" value="Salvar" />
+	</h:form>
+
+
+
+</body>
+</html>

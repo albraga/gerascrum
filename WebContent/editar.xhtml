@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<h:outputStylesheet library="css" name="main.css" />
+</h:head>
+<body>
+	<p:outputPanel>
+		<div class="ui-grid ui-grid-responsive">
+			<div class="ui-grid-row">
+				<div class="ui-grid-col-4">Gerenciador de Projetos Scrum</div>
+				<div class="ui-grid-col-4">
+					<p:link outcome="index" value="Home"></p:link>
+				</div>
+				<div class="ui-grid-col-4">&nbsp;</div>
+			</div>
+			<p:separator />
+			<p:separator style="visibility: hidden;" />
+			<div class="ui-grid-row">
+				<div class="ui-grid-col-6">
+					<h3>Product Backlog</h3>
+					<p:dataTable var="requisito" id="requisitosDataTable"
+						value="#{projetoBean.projetoSelecionado.requisitos}">
+						<p:column headerText="Requisitos">
+							<h:outputText value="#{requisito}" />
+						</p:column>
+					</p:dataTable>
+				</div>
+				<div class="ui-grid-col-6">
+					<h3>Sprint Backlog</h3>
+					<p:dataTable var="tarefa"
+						value="#{projetoBean.projetoSelecionado.tarefas}">
+						<p:column headerText="Tarefas dos Requisitos">
+							<h:outputText value="#{tarefa}" />
+						</p:column>
+					</p:dataTable>
+				</div>
+			</div>
+			<p:separator style="visibility: hidden;" />
+			<div class="ui-grid-row">
+				<div class="ui-grid-col-6">
+					<h:form acceptcharset="utf-8">
+						<h:panelGrid columns="3">
+						<h:commandButton action="#{projetoBean.salvarNovoRequisito}"
+							value="Adicionar" />
+							<p:inputText id="novoRequisito"
+								value="#{projetoBean.novoRequisito}" required="true" />
+							<h:message for="novoRequisito" />
+						</h:panelGrid>
+					</h:form>
+
+				</div>
+				<div class="ui-grid-col-6">&nbsp;</div>
+			</div>
+			<p:separator style="visibility: hidden;" />
+			<p:separator style="visibility: hidden;" />
+			<div class="ui-grid-row">
+				<div class="ui-grid-col-6">
+					<h:form>
+						<p:selectOneMenu value="#{projetoBean.nomeRequisitoSelecionado}">
+							<f:selectItem itemLabel="Selecione um Requisito" />
+							<f:selectItems
+								value="#{projetoBean.projetoSelecionado.requisitos}" />
+						</p:selectOneMenu><br/>
+						<p:commandButton action="#{projetoBean.enviarParaSprint}"
+							value="Enviar para Sprint Backlog" />
+					</h:form>
+
+
+				</div>
+				<div class="ui-grid-col-6">&nbsp;</div>
+			</div>
+
+			<p:separator style="visibility: hidden;" />
+			<p:separator />
+			<p:separator style="visibility: hidden;" />
+			<div class="ui-grid-row">
+				<div class="vermelho ui-grid-col-4">
+					<h3>Em desenvolvimento</h3>
+					<p:dataTable var="tarefa"
+						value="#{projetoBean.projetoSelecionado.emdesenvolvimento}">
+						<p:column headerText="Tarefa">
+							<h:outputText value="#{tarefa}" />
+						</p:column>
+					</p:dataTable>
+				</div>
+				<div class="amarelo ui-grid-col-4">
+					<h3>Em teste</h3>
+					<p:dataTable var="tarefa"
+						value="#{projetoBean.projetoSelecionado.emteste}">
+						<p:column headerText="Tarefa">
+							<h:outputText value="#{tarefa}" />
+						</p:column>
+					</p:dataTable>
+				</div>
+				<div class="verde ui-grid-col-4">
+					<h3>Aceito</h3>
+					<p:dataTable var="tarefa"
+						value="#{projetoBean.projetoSelecionado.aceito}">
+						<p:column headerText="Tarefas">
+							<h:outputText value="#{tarefa}" />
+						</p:column>
+					</p:dataTable>
+				</div>
+			</div>
+			<div class="ui-grid-row">
+				<div class="ui-grid-col-6">&nbsp;</div>
+				<div class="ui-grid-col-6">&nbsp;</div>
+			</div>
+		</div>
+	</p:outputPanel>
+</body>
+</html>
