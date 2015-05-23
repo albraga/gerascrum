@@ -21,6 +21,8 @@ public class ProjetoBean {
 	private String nomeRequisitoSelecionado;
 	private String novaTarefa;
 	private String nomeTarefaSelecionada;
+	private String nomeTarefaSelecionadaEmDesenvolvimento;
+	private String nomeTarefaSelecionadaEmTeste;
 
 	public ProjetoBean() {
 		projeto = new Projeto();
@@ -34,12 +36,16 @@ public class ProjetoBean {
 	}
 	
 	public String enviarParaEmTeste() {
-		
+		projetoSelecionado.getEmteste().add(nomeTarefaSelecionadaEmDesenvolvimento);
+		projetoSelecionado.getEmdesenvolvimento().remove(nomeTarefaSelecionadaEmDesenvolvimento);
+		new ProjetoDAO().update(projetoSelecionado);
 		return "editar?faces-redirect=true";
 	}
 	
 	public String enviarParaAceito() {
-		
+		projetoSelecionado.getAceito().add(nomeTarefaSelecionadaEmTeste);
+		projetoSelecionado.getEmteste().remove(nomeTarefaSelecionadaEmTeste);
+		new ProjetoDAO().update(projetoSelecionado);
 		return "editar?faces-redirect=true";
 	}
 	
@@ -173,6 +179,24 @@ public class ProjetoBean {
 
 	public void setNomeTarefaSelecionada(String nomeTarefaSelecionada) {
 		this.nomeTarefaSelecionada = nomeTarefaSelecionada;
+	}
+
+	public String getNomeTarefaSelecionadaEmDesenvolvimento() {
+		return nomeTarefaSelecionadaEmDesenvolvimento;
+	}
+
+	public void setNomeTarefaSelecionadaEmDesenvolvimento(
+			String nomeTarefaSelecionadaEmDesenvolvimento) {
+		this.nomeTarefaSelecionadaEmDesenvolvimento = nomeTarefaSelecionadaEmDesenvolvimento;
+	}
+
+	public String getNomeTarefaSelecionadaEmTeste() {
+		return nomeTarefaSelecionadaEmTeste;
+	}
+
+	public void setNomeTarefaSelecionadaEmTeste(
+			String nomeTarefaSelecionadaEmTeste) {
+		this.nomeTarefaSelecionadaEmTeste = nomeTarefaSelecionadaEmTeste;
 	}
 
 	

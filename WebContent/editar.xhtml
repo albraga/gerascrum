@@ -102,7 +102,7 @@
 					<h3>Em desenvolvimento</h3>
 					<p:dataTable var="tarefa"
 						value="#{projetoBean.projetoSelecionado.emdesenvolvimento}">
-						<p:column headerText="Tarefa">
+						<p:column headerText="Tarefas">
 							<h:outputText value="#{tarefa}" />
 						</p:column>
 					</p:dataTable>
@@ -111,7 +111,7 @@
 					<h3>Em teste</h3>
 					<p:dataTable var="tarefa"
 						value="#{projetoBean.projetoSelecionado.emteste}">
-						<p:column headerText="Tarefa">
+						<p:column headerText="Tarefas">
 							<h:outputText value="#{tarefa}" />
 						</p:column>
 					</p:dataTable>
@@ -127,8 +127,32 @@
 				</div>
 			</div>
 			<div class="ui-grid-row">
-				<div class="ui-grid-col-6">&nbsp;</div>
-				<div class="ui-grid-col-6">&nbsp;</div>
+				<div class="ui-grid-col-4">
+				<h:form>
+				<p:selectOneMenu value="#{projetoBean.nomeTarefaSelecionadaEmDesenvolvimento}">
+							<f:selectItem itemLabel="Selecione uma Tarefa/Requisito" />
+							<f:selectItems
+								value="#{projetoBean.projetoSelecionado.emdesenvolvimento}" />
+						</p:selectOneMenu><br/>
+						<p:commandButton action="#{projetoBean.enviarParaEmTeste}"
+							value="Enviar para Em Teste" />
+					</h:form>
+				
+				</div>
+				<div class="ui-grid-col-4">
+				
+				<h:form>
+				<p:selectOneMenu value="#{projetoBean.nomeTarefaSelecionadaEmTeste}">
+							<f:selectItem itemLabel="Selecione uma Tarefa/Requisito" />
+							<f:selectItems
+								value="#{projetoBean.projetoSelecionado.emteste}" />
+						</p:selectOneMenu><br/>
+						<p:commandButton action="#{projetoBean.enviarParaAceito}"
+							value="Enviar para Em Teste" />
+					</h:form>
+				
+				</div>
+				<div class="ui-grid-col-4">&nbsp;</div>
 			</div>
 		</div>
 	</p:outputPanel>
