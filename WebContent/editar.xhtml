@@ -55,7 +55,17 @@
 					</h:form>
 
 				</div>
-				<div class="ui-grid-col-6">&nbsp;</div>
+				<div class="ui-grid-col-6">			
+				<h:form acceptcharset="utf-8">
+						<h:panelGrid columns="3">
+						<h:commandButton action="#{projetoBean.salvarNovaTarefa}"
+							value="Adicionar" />
+							<p:inputText id="novoRequisito"
+								value="#{projetoBean.novaTarefa}" required="true" />
+							<h:message for="novoRequisito" />
+						</h:panelGrid>
+					</h:form>				
+				</div>
 			</div>
 			<p:separator style="visibility: hidden;" />
 			<p:separator style="visibility: hidden;" />
@@ -70,10 +80,18 @@
 						<p:commandButton action="#{projetoBean.enviarParaSprint}"
 							value="Enviar para Sprint Backlog" />
 					</h:form>
-
-
 				</div>
-				<div class="ui-grid-col-6">&nbsp;</div>
+				<div class="ui-grid-col-6">
+				<h:form>
+				<p:selectOneMenu value="#{projetoBean.nomeTarefaSelecionada}">
+							<f:selectItem itemLabel="Selecione uma Tarefa/Requisito" />
+							<f:selectItems
+								value="#{projetoBean.projetoSelecionado.tarefas}" />
+						</p:selectOneMenu><br/>
+						<p:commandButton action="#{projetoBean.enviarParaEmDesenvolvimento}"
+							value="Enviar para Em Desenvolvimento" />
+					</h:form>
+				</div>
 			</div>
 
 			<p:separator style="visibility: hidden;" />

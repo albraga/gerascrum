@@ -19,9 +19,35 @@ public class ProjetoBean {
 	private Projeto projetoSelecionado = null;
 	private String novoRequisito;
 	private String nomeRequisitoSelecionado;
+	private String novaTarefa;
+	private String nomeTarefaSelecionada;
 
 	public ProjetoBean() {
 		projeto = new Projeto();
+	}
+	
+	public String enviarParaEmDesenvolvimento() {
+		projetoSelecionado.getEmdesenvolvimento().add(nomeTarefaSelecionada);
+		projetoSelecionado.getTarefas().remove(nomeTarefaSelecionada);
+		new ProjetoDAO().update(projetoSelecionado);
+		return "editar?faces-redirect=true";
+	}
+	
+	public String enviarParaEmTeste() {
+		
+		return "editar?faces-redirect=true";
+	}
+	
+	public String enviarParaAceito() {
+		
+		return "editar?faces-redirect=true";
+	}
+	
+	public String salvarNovaTarefa() {
+		projetoSelecionado.getTarefas().add(novaTarefa);
+		new ProjetoDAO().update(projetoSelecionado);
+		novaTarefa = "";
+		return "editar?faces-redirect=true";
 	}
 	
 	public String salvarNovoRequisito() {
@@ -131,6 +157,22 @@ public class ProjetoBean {
 
 	public void setNomeRequisitoSelecionado(String nomeRequisitoSelecionado) {
 		this.nomeRequisitoSelecionado = nomeRequisitoSelecionado;
+	}
+
+	public String getNovaTarefa() {
+		return novaTarefa;
+	}
+
+	public void setNovaTarefa(String novaTarefa) {
+		this.novaTarefa = novaTarefa;
+	}
+
+	public String getNomeTarefaSelecionada() {
+		return nomeTarefaSelecionada;
+	}
+
+	public void setNomeTarefaSelecionada(String nomeTarefaSelecionada) {
+		this.nomeTarefaSelecionada = nomeTarefaSelecionada;
 	}
 
 	
